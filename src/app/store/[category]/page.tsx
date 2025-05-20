@@ -1,5 +1,12 @@
-export default function Category() {
+interface CategoryProps {
+    params: {
+        category:string
+    }
+}
+
+export default function Category(props : CategoryProps) {
+    const {category} = props.params;
     return(
-        <h1>Category</h1>
+        <h1>Category: {category}</h1>
     );
 }
