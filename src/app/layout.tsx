@@ -5,9 +5,12 @@ import { Header } from "app/Components/Shared/Header";
 
 import { Footer } from "app/Components/Shared/Footer";
 
+import "app/sass/globals.sass";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["100","400"]
 });
 
 const geistMono = Geist_Mono({
