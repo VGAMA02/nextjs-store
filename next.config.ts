@@ -1,12 +1,21 @@
 import type { NextConfig } from "next";
+import path from "path"; // ✅ usamos 'import' en lugar de 'require'
 
-const path = require('path')
+// Se eliminó: import { hostname } from "os"; // No se usa
 
 const nextConfig: NextConfig = {
-  /* config options here */
   sassOptions: {
-    includePaths: [path.join(__dirname,'src/sass')],
-    prependData: `@import "main.sass" `
+    includePaths: [path.join(__dirname, "src/sass")],
+    prependData: `@import "main.sass"`
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+        pathname: "**"
+      }
+    ]
   }
 };
 
