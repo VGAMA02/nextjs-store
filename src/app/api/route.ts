@@ -1,8 +1,8 @@
-import { getProducts } from "app/services/shopify"
+import { getMainProducts } from "app/services/shopify/products"
 
 
 export async function GET(){
-    const producs = await getProducts();
-    console.log(producs)
-    return Response.json({producs})
+    const products = await getMainProducts();
+    //console.log(products)
+    return Response.json({products})
 }
