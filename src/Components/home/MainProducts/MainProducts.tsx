@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import styles from "./MainProducts.module.sass";
-import { getMainProducts } from "app/services/shopify/products";
+//import { getMainProducts } from "app/services/shopify/products";
 
  //const products = await getProducts()
 
