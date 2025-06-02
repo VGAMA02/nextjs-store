@@ -1,6 +1,8 @@
 "use server"
 import { GraphQLClientSingleton } from "app/graphql"
 import { createUserMutation } from "app/graphql/mutations/createUserMutation"
+import { createAccessToken } from "app/utils/auth/createAccessToken"
+import { redirect } from "next/navigation"
 
 interface CustomerCreateResponse {
   customerCreate: {
@@ -33,8 +35,11 @@ export const handleCreateUser = async (formData: FormData) => {
     createUserMutation,
     variables
   )
-
-  const { customerUserErrors, customer } = customerCreate
-  console.log(customer)
-  console.log(customerUserErrors)
+  console.log("CustomerCreate" , customerCreate);
+  const { customerUserErrors, customer } = customerCreate;
+  console.log("Customer" , customer);
+  if(customer?.firstName){
+    await createAccessToken(formDataObject.email as string, formDataObject.password as string);
+    redirect("/store");
+  }
 }
