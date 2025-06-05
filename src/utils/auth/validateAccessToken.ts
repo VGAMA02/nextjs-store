@@ -14,6 +14,7 @@ export const validateAccessToken = async () => {
     })
 
     if(customer?.firstName) {
+      console.log(customer);
       return customer; 
     }   
   }
