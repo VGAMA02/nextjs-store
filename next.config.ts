@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 import path from "path"; // ✅ usamos 'import' en lugar de 'require'
 
 // Se eliminó: import { hostname } from "os"; // No se usa
+// $env:ANALYZE="true"; npm run build                              para correr el bundleAnalyzer
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+})
 
 const nextConfig: NextConfig = {
   sassOptions: {
@@ -19,4 +23,4 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);  
