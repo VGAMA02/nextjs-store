@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=false next build"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^15.3.3",

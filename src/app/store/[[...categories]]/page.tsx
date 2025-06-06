@@ -2,6 +2,8 @@ import { ProductsWrapper } from "app/Components/Store/ProductsWrapper";
 import { getProducts} from "app/services/shopify/products";
 import {getCollections, getCollectionsProducts } from "app/services/shopify/collections";
 
+export const runtime = "edge";
+
 interface CategoryProps {
     params: {
         categories: string[],
