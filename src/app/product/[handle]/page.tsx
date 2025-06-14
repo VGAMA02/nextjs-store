@@ -1,41 +1,49 @@
-import { ProductView } from "app/Components/product/ProductView"
-import { getProducts } from "app/services/shopify/products"
-import { redirect } from "next/navigation"
+import { ProductView } from "app/Components/product/ProductView";
+import { getProducts } from "app/services/shopify/products";
+import { redirect } from "next/navigation";
 
-
-
-interface ProductPageProps {
-  searchParams: {
-    id: string
-  }
+interface Params {
+  handle: string;
 }
 
-export async function generateMetada({searchParams}: ProductPageProps){
-  const id = searchParams.id;
-  const products = await getProducts(id)
-  const product = products[0]
+interface Props {
+  params: Params;
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
-  return{
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function generateMetadata(props: any) {
+  const { params } = props as Props;
+  const id = params.handle;
+
+  if (!id) {
+    return { title: "Producto no encontrado" };
+  }
+
+  const products = await getProducts(id);
+  const product = products[0];
+
+  return {
     title: product.title,
     description: product.description,
     keywords: product.tags,
-    openGraph:{
-      images: [product.image]
-    }
-  }
-
-
-
+    openGraph: {
+      images: [product.image],
+    },
+  };
 }
 
-export default async function ProductPage({ searchParams }: ProductPageProps) {
-  const id = searchParams.id;
-  const products = await getProducts(id)
-  const product = products[0]
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function ProductPage(props: any) {
+  const { params } = props as Props;
+  const id = params.handle;
 
-  if(!id){
-    redirect('/')
+  if (!id) {
+    redirect("/");
   }
 
-  return <ProductView product={product} />
+  const products = await getProducts(id);
+  const product = products[0];
+
+  return <ProductView product={product} />;
 }

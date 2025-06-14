@@ -1,8 +1,8 @@
 "use client"
 import Image from 'next/image';
-import style from '../sass/global-error.module.sass';
+//import style from '../sass/global-error.module.sass';
 
-export default function GlobalError({reset}: ErrorPagesProps){
+export default function GlobalError({reset}: ErrorPageProps){
     return(
         <main>
             <h1>Ha ocurrido un error</h1>

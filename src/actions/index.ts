@@ -41,7 +41,7 @@ export const handleCreateUser = async (formData: FormData) => {
 
 
   console.log("CustomerCreate" , customerCreate);
-  const { customerUserErrors, customer } = customerCreate;
+  const {customer } = customerCreate;
   console.log("Customer" , customer);
   if(customer?.firstName){
     await createAccessToken(formDataObject.email as string, formDataObject.password as string);

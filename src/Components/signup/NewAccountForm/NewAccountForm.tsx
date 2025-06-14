@@ -5,10 +5,10 @@ import { handleCreateUser } from "app/actions";
 
 export const NewAccountForm = () => {
 
-  const [errors, setErrors] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [errors, ] = useState<string[]>([]);
+  const [loading, ] = useState<boolean>(false);
 
-  const handleSubmit = async (event:any) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     await handleCreateUser(formData)

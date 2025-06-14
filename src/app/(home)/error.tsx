@@ -11,7 +11,7 @@ interface ErrorProps {
 export default function Error({error, reset}: ErrorProps){
 useEffect(() => {
     console.log(error)
-},[])
+})
 return(
     <div style={{padding: '10rem'}}>
         <h1> :/</h1>
